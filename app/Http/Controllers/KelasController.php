@@ -15,7 +15,7 @@ class KelasController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $kelas = Kelas::withCount('siswa')->select('kelas.*');
+            $kelas = Kelas::withCount('siswa');
 
             return datatables()->of($kelas)
                 ->addIndexColumn()
