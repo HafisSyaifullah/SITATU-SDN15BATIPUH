@@ -60,7 +60,7 @@ Route::middleware('auth')->group(function () {
     Route::middleware('role:Admin,Petugas Tata Usaha')->group(function () {
         Route::resource('guru', GuruController::class);
         Route::resource('pegawai', PegawaiController::class);
-        Route::resource('kelas', KelasController::class);
+        Route::resource('kelas', KelasController::class) ->parameters(['kelas' => 'kelas',]);
         Route::resource('tahun-ajaran', TahunAjaranController::class);
         Route::resource('siswa', SiswaController::class);
 

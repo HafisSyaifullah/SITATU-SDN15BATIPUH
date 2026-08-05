@@ -4,7 +4,7 @@
     <div class="card p-4" style="max-width:600px;">
         <h5 class="fw-semibold mb-3">Edit Data Kelas</h5>
 
-        <form action="{{ route('kelas.update', $kelas->id) }}" method="POST">
+        <form action="{{ route('kelas.update', ['kelas' => $kelas->id]) }}" method="POST">
             @csrf
             @method('PUT')
             @include('kelas.form', ['kelas' => $kelas])
