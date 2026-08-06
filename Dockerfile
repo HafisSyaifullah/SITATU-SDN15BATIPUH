@@ -30,7 +30,12 @@ WORKDIR /app
 
 COPY . .
 
-RUN composer install --no-dev --optimize-autoloader
+RUN mkdir -p storage/framework/cache/data \
+    storage/framework/views \
+    storage/framework/sessions \
+    bootstrap/cache
+
+RUN composer install --no-dev --optimize-autoloader --no-interaction
 
 RUN npm install
 RUN npm run build
@@ -39,4 +44,4 @@ RUN php artisan storage:link || true
 
 EXPOSE 8080
 
-CMD php artisan serve --host=0.0.0.0 --port=$PORT
+CMD php artisan serve --host=0.0.0.0 --port=${PORT:-8080}
