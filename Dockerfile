@@ -35,7 +35,10 @@ RUN mkdir -p storage/framework/cache/data \
     storage/framework/sessions \
     bootstrap/cache
 
-RUN composer install --no-dev --optimize-autoloader --no-interaction
+RUN composer install \
+    --no-dev \
+    --optimize-autoloader \
+    --no-interaction
 
 RUN npm install
 RUN npm run build
